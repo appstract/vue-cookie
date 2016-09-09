@@ -51,7 +51,6 @@
         define([], function(){ return VueCookie; })
     } else if (window.Vue) {
         window.VueCookie = VueCookie;
-        Vue.use(VueCookie, {encode: true});
     }
 
 })();
