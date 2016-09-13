@@ -29,7 +29,6 @@ var VueCookie = {
         }
 
         v = v[2];
-        console.log(v);
 
         if(this.options.encode){
             v = Base64.decode(v);
