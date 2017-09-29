@@ -20,7 +20,7 @@ let VueCookie = {
 
         let expires = new Date;
         expires.setTime(expires.getTime() + 24*60*60*1000*days);
-        window.document.cookie = name + "=" + value + ";path=/;expires=" + expires.toGMTString();
+        window.document.cookie = name + "=" + value + ";domain=." + window.location.host.toString() + ";path=/;expires=" + expires.toGMTString();
     },
 
     get: function (name) {
