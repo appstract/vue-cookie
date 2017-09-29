@@ -9,7 +9,7 @@ let VueCookie = {
         this.options = options ? options : {encode: false};
     },
 
-    set: function (name, value, days) {
+    set: function (name, value, days, host) {
         if(typeof value === 'object'){
             value = '[object]' + JSON.stringify(value);
         }
@@ -17,10 +17,15 @@ let VueCookie = {
         if(this.options.encode) {
             value = Base64.encode(value);
         }
+        
+        if(typeof host == 'undefined') {
+            host = window.location.host.toString();
+        }
 
         let expires = new Date;
         expires.setTime(expires.getTime() + 24*60*60*1000*days);
-        window.document.cookie = name + "=" + value + ";domain=." + window.location.host.toString() + ";path=/;expires=" + expires.toGMTString();
+
+        window.document.cookie = name + "=" + value + ";domain=." + host + ";path=/;expires=" + expires.toGMTString();
     },
 
     get: function (name) {
